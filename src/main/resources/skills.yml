@@ -1,0 +1,126 @@
+skills:
+  hunter:
+    level_1:
+      ability:
+        - "MIGHTY:5"
+        - "AGILITY:1"
+      required:
+        - "MONEY:5000"
+        - "SC_POINT:100"
+    level_2:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+  miner:
+    level_1:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+    level_2:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+    level_3:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+    level_4:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+    level_5:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+    level_6:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+    level_7:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+  fisher:
+    level_1:
+      ability:
+        - "MIGHTY:5"
+        - "AGILITY:1"
+      required:
+        - "MONEY:5000"
+        - "SC_POINT:100"
+    level_2:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+  farmer:
+    level_1:
+      ability:
+        - "MIGHTY:5"
+        - "AGILITY:1"
+      required:
+        - "MONEY:5000"
+        - "SC_POINT:100"
+    level_2:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+  digger:
+    level_1:
+      ability:
+        - "MIGHTY:5"
+        - "AGILITY:1"
+      required:
+        - "MONEY:5000"
+        - "SC_POINT:100"
+    level_2:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+  alchemist:
+    level_1:
+      ability:
+        - "MIGHTY:5"
+        - "AGILITY:1"
+      required:
+        - "MONEY:5000"
+        - "SC_POINT:100"
+    level_2:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"

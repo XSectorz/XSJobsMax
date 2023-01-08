@@ -1,0 +1,12 @@
+name: XSJobsMax
+version: '${project.version}'
+main: net.xsapi.panat.xsjobsmax.core.core
+api-version: 1.19
+authors: [ PanatXsectorZ ]
+description: LimitBreak your jobs skill!!
+aliases: xsjobs
+depend: [Vault]
+softdepend: [PlayerPoints]
+commands:
+  xsjobs:
+    description: command for xsjobs-max plugin

@@ -1,0 +1,30 @@
+prefix: "&x&d&4&a&a&3&d&lXSJOB &8&l»"
+no_permission: "<prefix> &x&d&4&5&9&5&9คุณไม่มีสิทธิในการใช้งานคำสั่งดังกล่าว"
+skill_unlock_lore: "&x&d&4&a&0&3&bรางวัลสำหรับการปลดล็อค:"
+skill_unknow: "&x&d&4&3&b&5&7ไม่พบสกิลดังกล่าว"
+skills:
+  MIGHTY:
+    - "&x&f&f&6&7&6&c+{amount} &f &x&f&f&6&7&6&cความแข็งแกร่ง"
+  AGILITY:
+    - "&x&7&e&d&5&f&f+{amount} &f &x&7&e&d&5&f&fฟื้นฟูมานา"
+required:
+  MONEY: "&x&d&4&b&a&2&fเงินตรา &f"
+  SC_POINT: "&x&3&d&a&7&d&4สยามคอยด์ &f"
+upgrades:
+  can_upgrade:
+    - ""
+    - "&x&d&4&a&0&3&bเงื่อนไขการปลดล็อค"
+    - "{unlock_condition}"
+    - ""
+    - "&f &x&d&4&a&0&3&bคลิก-ซ้าย เพื่อทำการอัพเกรด"
+  cant_upgrade:
+    - ""
+    - "&f &x&d&4&3&d&4&7ไม่สามารถอัพเกรดได้"
+  already_upgrade:
+    - ""
+    - "&f &x&4&b&d&4&4&0อัพเกรดเรียบร้อยแล้ว"
+  max_upgrade:
+    - ""
+    - "&f &x&d&4&a&0&3&bเลเวลสูงสุดแล้ว"
+  upgrade_required_needed: "&x&d&4&3&9&3&9✘ &8(%have%/%required%) %name%"
+  upgrade_required_success: "&x&7&4&d&4&2&8✔ &8(%have%/%required%) %name%"

@@ -1,0 +1,139 @@
+
+options:
+  click:
+    sound:
+      upgrade_already:
+        enable: true
+        sound: ENTITY_ITEM_BREAK
+      upgrade_out_of_index:
+        enable: true
+        sound: ENTITY_ITEM_BREAK
+      upgrade_require_more:
+        enable: true
+        sound: BLOCK_NOTE_BLOCK_BASS
+      upgrade_ready:
+        enable: true
+        sound: BLOCK_NOTE_BLOCK_BELL
+
+gui:
+  title: "&8Jobs Upgrades"
+  sound:
+    enable: true
+    type: BLOCK_CHEST_OPEN
+  decoration:
+    barrier:
+      material: PAPER
+      modelData: 10230
+      name: "&r"
+    exit:
+      material: PAPER
+      modelData: 10224
+      name: "&x&d&4&3&b&4&eปิดหน้าเมนู"
+    next_page:
+      material: PAPER
+      modelData: 10211
+      name: "&x&d&4&c&e&3&d>"
+    prev_page:
+      material: PAPER
+      modelData: 10209
+      name: "&x&d&4&c&e&3&d<"
+    coming_soon:
+      material: PAPER
+      modelData: 10003
+      name: "&x&7&9&d&4&9&8รอการอัพเดต"
+    skill_prev_block:
+      material: PAPER
+      modelData: 10233
+      name: "&x&d&4&c&e&3&d<"
+    skill_prev:
+      material: PAPER
+      modelData: 10218
+      name: "&x&d&4&c&e&3&d<"
+    skill_next_block:
+      material: PAPER
+      modelData: 10234
+      name: "&x&d&4&c&e&3&d>"
+    skill_next:
+      material: PAPER
+      modelData: 10219
+      name: "&x&d&4&c&e&3&d>"
+    skill_unlock:
+      material: GOLD_NUGGET
+      modelData: 7005
+      name: "&8[&x&4&b&d&4&4&0<level>&8] &x&7&9&d&4&9&8ปลดล็อค - &x&d&4&8&7&4&e<skill>"
+    skill_lock:
+      material: GOLD_NUGGET
+      modelData: 7006
+      name: "&8[&x&d&4&3&d&4&7<level>&8] &x&d&4&2&0&4&0ล็อค - &x&d&4&8&7&4&e<skill>"
+  skill:
+    hunter:
+      material: GOLD_NUGGET
+      modelData: 12910
+      name: "&x&d&4&a&5&2&aทักษะ &8: &x&d&4&2&a&4&9แห่งการต่อสู้"
+      lore:
+        - "&x&9&4&d&4&9&2ทักษะแห่งการต่อสู้ของมังกร"
+        - "&x&9&4&d&4&9&2เมื่อปลดล้อคทักษะจะทำให้"
+        - "&x&9&4&d&4&9&2ความสามารถในการโจมตีสูงขึ้น"
+        - "&r"
+        - "&f &x&d&4&a&5&2&aทักษะของอาชีพ &8: &x&d&4&2&a&4&9นักล่า"
+        - "&r"
+    miner:
+      material: GOLD_NUGGET
+      modelData: 13110
+      name: "&x&d&4&a&5&2&aทักษะ &8: &x&d&4&2&a&4&9แห่งนักขุด"
+      lore:
+        - "&x&9&4&d&4&9&2ทักษะแห่งการขุดหาสมบัติ"
+        - "&x&9&4&d&4&9&2เมื่อปลดล้อคทักษะจะทำให้"
+        - "&x&9&4&d&4&9&2ความสามารถในการค้นหาสิ่งมีค่า"
+        - "&x&9&4&d&4&9&2และความแข็งแกร่งการค้นหามากขึ้น"
+        - "&r"
+        - "&f &x&d&4&a&5&2&aทักษะของอาชีพ &8: &x&d&4&2&a&4&9นักขุด"
+        - "&r"
+    fisher:
+      material: GOLD_NUGGET
+      modelData: 12810
+      name: "&x&d&4&a&5&2&aทักษะ &8: &x&d&4&2&a&4&9แห่งการตกปลา"
+      lore:
+        - "&x&9&4&d&4&9&2ทักษะแห่งการตกปลา"
+        - "&x&9&4&d&4&9&2เมื่อปลดล้อคทักษะจะทำให้"
+        - "&x&9&4&d&4&9&2ความสามารถในการตกปลา"
+        - "&x&9&4&d&4&9&2และความรูปแบบการต่อสู้เพิ่มขึ้น"
+        - "&r"
+        - "&f &x&d&4&a&5&2&aทักษะของอาชีพ &8: &x&d&4&2&a&4&9ตกปลา"
+        - "&r"
+    farmer:
+      material: GOLD_NUGGET
+      modelData: 12710
+      name: "&x&d&4&a&5&2&aทักษะ &8: &x&d&4&2&a&4&9แห่งการเก็บเกี่ยว"
+      lore:
+        - "&x&9&4&d&4&9&2ทักษะแห่งทำฟาร์ม"
+        - "&x&9&4&d&4&9&2เมื่อปลดล้อคทักษะจะทำให้"
+        - "&x&9&4&d&4&9&2ความสามารถในการเก็บเกี่ยว"
+        - "&x&9&4&d&4&9&2มีประสิทธิภาพมากยิ่งขึ้น"
+        - "&r"
+        - "&f &x&d&4&a&5&2&aทักษะของอาชีพ &8: &x&d&4&2&a&4&9เกษตรกร"
+        - "&r"
+    digger:
+      material: GOLD_NUGGET
+      modelData: 12410
+      name: "&x&d&4&a&5&2&aทักษะ &8: &x&d&4&2&a&4&9แห่งพื้นดิน"
+      lore:
+        - "&x&9&4&d&4&9&2ทักษะแห่งการขุดพื้นผิว"
+        - "&x&9&4&d&4&9&2เมื่อปลดล้อคทักษะจะทำให้"
+        - "&x&9&4&d&4&9&2ความสามารถในขุดพื้นดิน"
+        - "&x&9&4&d&4&9&2มีความแข็งแกร่งมากขึ้น"
+        - "&r"
+        - "&f &x&d&4&a&5&2&aทักษะของอาชีพ &8: &x&d&4&2&a&4&9นักขุดเจาะ"
+        - "&r"
+    alchemist:
+      material: GOLD_NUGGET
+      modelData: 12110
+      name: "&x&d&4&a&5&2&aทักษะ &8: &x&d&4&2&a&4&9แห่งเวทย์มนต์"
+      lore:
+        - "&x&9&4&d&4&9&2ทักษะแห่งการปรุงยา"
+        - "&x&9&4&d&4&9&2เมื่อปลดล้อคทักษะจะทำให้"
+        - "&x&9&4&d&4&9&2ความสามารถในการปรุงยา"
+        - "&x&9&4&d&4&9&2มีความพิเศษมากขึ้น"
+        - "&r"
+        - "&f &x&d&4&a&5&2&aทักษะของอาชีพ &8: &x&d&4&2&a&4&9นักปรุงยา"
+        - "&r"
