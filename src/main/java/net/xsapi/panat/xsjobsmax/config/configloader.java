@@ -10,6 +10,7 @@ public class configloader {
         new config().loadConfigu();
         new messages().loadConfigu();
         new skills().loadConfigu();
+        new items().loadConfigu();
     }
 
 }

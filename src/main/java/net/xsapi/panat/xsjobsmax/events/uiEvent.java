@@ -81,10 +81,13 @@ public class uiEvent implements Listener {
                         }
                     } else {
 
-                        if(jobsSkillHandler.requireChecker(jobSkill.getJobsLevels().get(levelClicked), xsPlayerData)) {
+                        if(jobsSkillHandler.requireChecker(jobSkill.getJobsLevels().get(levelClicked), xsPlayerData,false)) {
                             if(ConfigUtils.getBoolean("options.click.sound.upgrade_ready.enable")) {
                                 p.playSound(p.getLocation(), Sound.valueOf(ConfigUtils.getString("options.click.sound.upgrade_ready.sound")),1.0f,1.0f);
                             }
+                            jobsSkillHandler.requireChecker(jobSkill.getJobsLevels().get(levelClicked), xsPlayerData,true);
+                            playerSkill.setLevel(playerSkill.getLevel()+1);
+                            jobsMaxUI.openUI(xsPlayerData.getPlayer());
                         } else {
                             if(ConfigUtils.getBoolean("options.click.sound.upgrade_require_more.enable")) {
                                 p.playSound(p.getLocation(), Sound.valueOf(ConfigUtils.getString("options.click.sound.upgrade_require_more.sound")),1.0f,1.0f);
@@ -92,7 +95,7 @@ public class uiEvent implements Listener {
                         }
                     }
 
-                    p.sendMessage(jobSkill.getNameID()+"-"+levelClicked);
+                    //p.sendMessage(jobSkill.getNameID()+"-"+levelClicked);
                 }
             }
 

@@ -14,5 +14,5 @@ public class joinEvent implements Listener {
 
         xsPlayer playerData = new xsPlayer(p);
     }
-
+    
 }

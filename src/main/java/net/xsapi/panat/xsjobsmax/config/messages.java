@@ -41,14 +41,14 @@ public class messages {
     }
 
     public static void reload() {
-        config.customConfigFile = new File(core.getPlugin().getDataFolder(), "messages.yml");
-        if (!config.customConfigFile.exists()) {
-            config.customConfigFile.getParentFile().mkdirs();
-            core.getPlugin().saveResource("messages.yml", false);
+        customConfigFile = new File(core.getPlugin().getDataFolder(), "items.yml");
+        if (!customConfigFile.exists()) {
+            customConfigFile.getParentFile().mkdirs();
+            core.getPlugin().saveResource("items.yml", false);
         } else {
-            config.customConfig = (FileConfiguration) YamlConfiguration.loadConfiguration(config.customConfigFile);
+            customConfig = (FileConfiguration) YamlConfiguration.loadConfiguration(customConfigFile);
             try {
-                config.customConfig.save(config.customConfigFile);
+                customConfig.save(customConfigFile);
                 core.getPlugin().reloadConfig();
             } catch (IOException e) {
                 e.printStackTrace();

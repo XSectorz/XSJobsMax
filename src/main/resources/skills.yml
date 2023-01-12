@@ -7,6 +7,7 @@ skills:
       required:
         - "MONEY:5000"
         - "SC_POINT:100"
+        - "ITEM;test:10"
     level_2:
       ability:
         - "MIGHTY:1"

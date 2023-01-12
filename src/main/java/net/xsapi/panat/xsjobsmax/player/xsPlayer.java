@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class xsPlayer {
 
@@ -94,10 +95,18 @@ public class xsPlayer {
         }
     }
 
+    public void saveSkillData() {
+        for (Map.Entry<String,xsSkill> skillData : skillList.entrySet()) {
+            xsSkill skill = skillData.getValue();
+            String type = skillData.getKey();
+            userConfig.set("skills."+type+".level", skill.getLevel());
+        }
+    }
+
     public void saveUser() {
 
+        saveSkillData();
         core.getXSPlayer().remove(player.getUniqueId());
-
         try {
             getUserConfig().save(userFile);
         } catch (Exception e) {

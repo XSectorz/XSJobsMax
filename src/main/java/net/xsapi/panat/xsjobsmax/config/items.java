@@ -7,7 +7,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 
-public class skills {
+public class items {
     public static File customConfigFile;
 
     public static FileConfiguration customConfig;
@@ -17,10 +17,10 @@ public class skills {
     }
 
     public void loadConfigu() {
-        customConfigFile = new File(core.getPlugin().getDataFolder(), "skills.yml");
+        customConfigFile = new File(core.getPlugin().getDataFolder(), "items.yml");
         if (!customConfigFile.exists()) {
             customConfigFile.getParentFile().mkdirs();
-            core.getPlugin().saveResource("skills.yml", false);
+            core.getPlugin().saveResource("items.yml", false);
         }
         customConfig = (FileConfiguration) new YamlConfiguration();
         try {
@@ -31,7 +31,7 @@ public class skills {
     }
 
     public static void save() {
-        customConfigFile = new File(core.getPlugin().getDataFolder(), "skills.yml");
+        customConfigFile = new File(core.getPlugin().getDataFolder(), "items.yml");
         try {
             customConfig.options().copyDefaults(true);
             customConfig.save(customConfigFile);

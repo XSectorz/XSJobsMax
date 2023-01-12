@@ -59,6 +59,12 @@ public class core extends JavaPlugin {
     @Override
     public void onDisable() {
         Bukkit.getLogger().info("§c[XSJOBS] Plugin Disabled 1.19.2!");
+
+        for(Player p : Bukkit.getOnlinePlayers()) {
+            xsPlayer xPlayer = core.getXSPlayer().get(p.getUniqueId());
+            xPlayer.saveUser();
+        }
+
     }
 
     public void reStoreData() {
