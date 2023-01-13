@@ -20,6 +20,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 public class commands implements CommandExecutor {
 
@@ -38,6 +39,11 @@ public class commands implements CommandExecutor {
                     xsPlayer xsPlayerData = core.getXSPlayer().get(sender.getUniqueId());
                     xsPlayerData.setPageOpen(1);
                     jobsMaxUI.openUI(sender);
+
+                    for(Map.Entry<String,Integer> data : xsPlayerData.getAbility().entrySet()) {
+                        sender.sendMessage(data.getKey() + " : " + data.getValue());
+                    }
+
                     return true;
                 } else if(args.length == 1) {
                     if(args[0].equalsIgnoreCase("help")) {
@@ -204,6 +210,7 @@ public class commands implements CommandExecutor {
                                 xsPlayer xPlayer = core.getXSPlayer().get(target.getUniqueId());
 
                                 xPlayer.getSkillList().get(skill).setLevel(lvl);
+                                jobsSkillHandler.getAbilityList(xPlayer,skill);
                             }
 
                             sender.sendMessage(MessagesUtils.messages("set_skill_success").replace("<player>",args[1].toString())

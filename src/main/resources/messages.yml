@@ -26,6 +26,8 @@ skills:
     - "&x&f&f&6&7&6&c+{amount} &f &x&f&f&6&7&6&cความแข็งแกร่ง"
   AGILITY:
     - "&x&7&e&d&5&f&f+{amount} &f &x&7&e&d&5&f&fฟื้นฟูมานา"
+  TOUGHNESS:
+    - "&x&f&f&7&c&4&b+{amount} &f &x&f&f&7&c&4&bความทนทาน"
 required:
   MONEY: "&x&d&4&b&a&2&fเงินตรา &f"
   SC_POINT: "&x&3&d&a&7&d&4สยามคอยด์ &f"

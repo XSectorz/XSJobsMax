@@ -20,6 +20,19 @@ gui:
   sound:
     enable: true
     type: BLOCK_CHEST_OPEN
+  stats_info:
+    material: PAPER
+    modelData: 10231
+    name: "&8(&f&8) &x&7&5&d&4&6&6ค่าสถานะการอัพเกรด &8(&f&8)"
+    lore:
+      - "&r"
+      - "&f &x&f&f&6&7&6&cความแข็งแกร่ง &8: &x&d&4&c&f&5&b<mighty:amount> &8(&x&5&5&d&4&7&1+<mighty:effect>&8)"
+      - "&f &x&7&e&d&5&f&fฟื้นฟูมานา &8: &x&d&4&c&f&5&b<agility:amount> &8(&x&5&5&d&4&7&1+<agility:effect>&8)"
+      - "&f &x&f&f&7&c&4&bความทนทาน &8: &x&d&4&c&f&5&b<toughness:amount> &8(&x&5&5&d&4&7&1+<toughness:effect>&8)"
+      - "&r"
+      - "&x&d&4&c&f&5&b▪ &x&f&f&6&7&6&cความแข็งแกร่ง &7ทุกๆ &x&d&4&c&f&5&b&l5 &7หน่วย เพิ่มพลังโจมตี &x&d&4&c&f&5&b&l1 &7หน่วย"
+      - "&x&d&4&c&f&5&b▪ &x&7&e&d&5&f&fฟื้นฟูมานา &7ทุกๆ &x&d&4&c&f&5&b&l10 &7หน่วย เพิ่มการฟื้นฟูมานา &x&d&4&c&f&5&b&l1%"
+      - "&x&d&4&c&f&5&b▪ &x&f&f&7&c&4&bความทนทาน &7ทุกๆ &x&d&4&c&f&5&b&l10 &7หน่วย ลดความเสียหายที่ได้รับลง &x&d&4&c&f&5&b&l0.1%"
   decoration:
     barrier:
       material: PAPER

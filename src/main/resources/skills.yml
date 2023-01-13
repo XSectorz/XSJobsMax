@@ -18,7 +18,7 @@ skills:
   miner:
     level_1:
       ability:
-        - "MIGHTY:1"
+        - "TOUGHNESS:15"
         - "AGILITY:1"
       required:
         - "MONEY:6000"

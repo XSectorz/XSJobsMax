@@ -18,16 +18,18 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
 public class jobsMaxUI {
 
-    public static ArrayList<Integer> blocked_index = new ArrayList<>(Arrays.asList(45,46,47,51,52,53));
+    public static ArrayList<Integer> blocked_index = new ArrayList<>(Arrays.asList(45,46,47,51,52));
     public static int close_index = 49;
     public static int next_index = 50;
     public static int prev_index = 48;
+    public static int info_index = 53;
     public static ArrayList<Integer> skill_icon_index = new ArrayList<>(Arrays.asList(0,9,18,27,36));
 
     public static void openUI(Player p) {
@@ -62,6 +64,30 @@ public class jobsMaxUI {
         } else {
             inv.setItem(next_index, ItemUtils.createDecoration("barrier"));
         }
+
+
+        ArrayList<String> lores_info = new ArrayList<>();
+        DecimalFormat df = new DecimalFormat("#.##");
+        for(String lore_info : ConfigUtils.getStringList("gui.stats_info.lore")) {
+
+            int mighty = xsPlayerData.getAbility().get("MIGHTY");
+            int agility = xsPlayerData.getAbility().get("AGILITY");
+            int toughness = xsPlayerData.getAbility().get("TOUGHNESS");
+
+            lores_info.add(lore_info.replace("<mighty:amount>",mighty+"")
+                    .replace("<agility:amount>",agility+"")
+                    .replace("<toughness:amount>",toughness+"")
+                    .replace("<mighty:effect>",(mighty/5)+"")
+                    .replace("<agility:effect>",(agility/10)+"%")
+                    .replace("<toughness:effect>",(df.format(toughness/10))+"%"));
+        }
+
+        inv.setItem(info_index,ItemUtils.createItem(Material.valueOf(ConfigUtils.getString("gui.stats_info.material")),
+                1,ConfigUtils.getInteger("gui.stats_info.modelData"),
+                ConfigUtils.getString("gui.stats_info.name"),
+                lores_info,
+                false,
+                new HashMap<>()));
 
         for(int i = 0 ; i < 5 ; i++) {
 

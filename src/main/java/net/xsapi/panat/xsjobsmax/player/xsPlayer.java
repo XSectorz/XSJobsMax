@@ -2,6 +2,7 @@ package net.xsapi.panat.xsjobsmax.player;
 
 import net.xsapi.panat.xsjobsmax.config.config;
 import net.xsapi.panat.xsjobsmax.core.core;
+import net.xsapi.panat.xsjobsmax.core.jobsSkillHandler;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -21,6 +22,8 @@ public class xsPlayer {
     private HashMap<String,xsSkill> skillList = new HashMap<>();
     private ArrayList<String> skillMenuID = new ArrayList<>();
 
+    private HashMap<String,Integer> ability = new HashMap<String, Integer>();
+
     public xsPlayer(Player p) {
         this.player = p;
         this.pageOpen = 1;
@@ -30,6 +33,10 @@ public class xsPlayer {
         core.getXSPlayer().put(player.getUniqueId(),this);
 
         createUserFile();
+    }
+
+    public HashMap<String, Integer> getAbility() {
+        return ability;
     }
 
     public ArrayList<String> getSkillMenuID() {
@@ -66,6 +73,7 @@ public class xsPlayer {
             userConfig.set("AccoutName", player.getName());
         }
 
+        normalStats();
         checkSkill();
         loadSkill();
 
@@ -76,10 +84,17 @@ public class xsPlayer {
         }
     }
 
+    public void normalStats() {
+        ability.put("MIGHTY",0);
+        ability.put("AGILITY",0);
+        ability.put("TOUGHNESS",0);
+    }
+
     public void loadSkill() {
         for (String skill : config.customConfig.getConfigurationSection("gui.skill").getKeys(false)) {
-           xsSkill skillID = new xsSkill(skill,userConfig.getInt("skills."+skill+".level"));
+            xsSkill skillID = new xsSkill(skill,userConfig.getInt("skills."+skill+".level"));
             skillList.put(skill,skillID);
+            jobsSkillHandler.getAbilityList(this,skill);
         }
     }
 
@@ -91,6 +106,7 @@ public class xsPlayer {
         for (String skill : config.customConfig.getConfigurationSection("gui.skill").getKeys(false)) {
             if(userConfig.get("skills."+skill) == null) {
                 userConfig.set("skills."+skill+".level", 0);
+                getAbility().put(skill,0);
             }
         }
     }

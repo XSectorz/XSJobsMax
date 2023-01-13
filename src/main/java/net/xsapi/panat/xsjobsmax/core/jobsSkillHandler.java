@@ -2,6 +2,7 @@ package net.xsapi.panat.xsjobsmax.core;
 
 import net.xsapi.panat.xsjobsmax.config.items;
 import net.xsapi.panat.xsjobsmax.config.messages;
+import net.xsapi.panat.xsjobsmax.config.skills;
 import net.xsapi.panat.xsjobsmax.player.xsPlayer;
 import net.xsapi.panat.xsjobsmax.utils.MessagesUtils;
 import org.bukkit.entity.Item;
@@ -194,6 +195,34 @@ public class jobsSkillHandler {
 
 
         return have;
+    }
+
+    public static void getAbilityList(xsPlayer xPlayer,String skill) {
+
+        int level_temp = 0;
+
+        for(String level : skills.customConfig.getConfigurationSection("skills."+skill).getKeys(false)) {
+
+            level_temp += 1;
+
+            if(level_temp > xPlayer.getSkillList().get(skill).getLevel()) {
+                break;
+            } else {
+                for(String ability : skills.customConfig.getStringList("skills."+skill+"."+level+".ability")) {
+                    String type = ability.split(":")[0];
+                    int amt = Integer.parseInt(ability.split(":")[1]);
+
+                    if(xPlayer.getAbility().get(type) != null) {
+                        xPlayer.getAbility().put(type,xPlayer.getAbility().get(type)+amt);
+                    } else {
+                        xPlayer.getAbility().put(type,amt);
+                    }
+
+                }
+            }
+
+        }
+
     }
 
 }
