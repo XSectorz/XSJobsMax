@@ -40,9 +40,9 @@ public class commands implements CommandExecutor {
                     xsPlayerData.setPageOpen(1);
                     jobsMaxUI.openUI(sender);
 
-                    for(Map.Entry<String,Integer> data : xsPlayerData.getAbility().entrySet()) {
-                        sender.sendMessage(data.getKey() + " : " + data.getValue());
-                    }
+                    //for(Map.Entry<String,Integer> data : xsPlayerData.getAbility().entrySet()) {
+                    //    sender.sendMessage(data.getKey() + " : " + data.getValue());
+                    //}
 
                     return true;
                 } else if(args.length == 1) {

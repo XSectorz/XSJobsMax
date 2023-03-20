@@ -11,6 +11,7 @@ public class configloader {
         new messages().loadConfigu();
         new skills().loadConfigu();
         new items().loadConfigu();
+        new ability().loadConfigu();
     }
 
 }

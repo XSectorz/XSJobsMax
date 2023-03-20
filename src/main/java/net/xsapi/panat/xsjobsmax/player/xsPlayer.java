@@ -23,6 +23,9 @@ public class xsPlayer {
     private ArrayList<String> skillMenuID = new ArrayList<>();
 
     private HashMap<String,Integer> ability = new HashMap<String, Integer>();
+    private HashMap<String,Long> cooldowns = new HashMap<String,Long>();
+
+    private HashMap<String,Long> activated_ability = new HashMap<String,Long>();
 
     public xsPlayer(Player p) {
         this.player = p;
@@ -37,6 +40,13 @@ public class xsPlayer {
 
     public HashMap<String, Integer> getAbility() {
         return ability;
+    }
+
+    public HashMap<String,Long> getCooldowns() {
+        return cooldowns;
+    }
+    public HashMap<String,Long> getActivated_ability() {
+        return activated_ability;
     }
 
     public ArrayList<String> getSkillMenuID() {
@@ -90,7 +100,16 @@ public class xsPlayer {
         ability.put("TOUGHNESS",0);
     }
 
+    public void updateSkillStats() {
+        normalStats();
+        for (String skill : config.customConfig.getConfigurationSection("gui.skill").getKeys(false)) {
+            jobsSkillHandler.getAbilityList(this,skill);
+        }
+
+    }
+
     public void loadSkill() {
+
         for (String skill : config.customConfig.getConfigurationSection("gui.skill").getKeys(false)) {
             xsSkill skillID = new xsSkill(skill,userConfig.getInt("skills."+skill+".level"));
             skillList.put(skill,skillID);

@@ -71,6 +71,7 @@ public class jobsMaxUI {
         for(String lore_info : ConfigUtils.getStringList("gui.stats_info.lore")) {
 
             int mighty = xsPlayerData.getAbility().get("MIGHTY");
+
             int agility = xsPlayerData.getAbility().get("AGILITY");
             int toughness = xsPlayerData.getAbility().get("TOUGHNESS");
 
@@ -79,7 +80,7 @@ public class jobsMaxUI {
                     .replace("<toughness:amount>",toughness+"")
                     .replace("<mighty:effect>",(mighty/5)+"")
                     .replace("<agility:effect>",(agility/10)+"%")
-                    .replace("<toughness:effect>",(df.format(toughness/10))+"%"));
+                    .replace("<toughness:effect>",(df.format((double) (toughness/10)/10))+"%"));
         }
 
         inv.setItem(info_index,ItemUtils.createItem(Material.valueOf(ConfigUtils.getString("gui.stats_info.material")),
@@ -140,10 +141,23 @@ public class jobsMaxUI {
 
                     String abilityType = lores.split(":")[0];
                     int abilityAmt = Integer.parseInt(lores.split(":")[1]);
+                    String abilityNum = "";
 
-                    for(String jobSkillDesc : jobsSkillHandler.decodeSkill(abilityType,abilityAmt)) {
-                        lore.add(jobSkillDesc);
+                    if(lores.split(":").length == 3) {
+                        abilityNum = lores.split(":")[2];
                     }
+
+                    if(abilityType.equalsIgnoreCase("MIGHTY") || abilityType.equalsIgnoreCase("AGILITY")
+                    || abilityType.equalsIgnoreCase("TOUGHNESS")) {
+                        for(String jobSkillDesc : jobsSkillHandler.decodeSkill(abilityType,abilityAmt)) {
+                            lore.add(jobSkillDesc);
+                        }
+                    } else {
+                        for(String jobSkillDesc : jobsSkillHandler.decodeSkill(abilityType,abilityAmt,abilityNum)) {
+                            lore.add(jobSkillDesc);
+                        }
+                    }
+
                 }
 
                 if(xsPlayerData.getSkillList().get(skillName).getLevel() == startIndexOfSkill+j) {

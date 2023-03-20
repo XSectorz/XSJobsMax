@@ -87,6 +87,7 @@ public class uiEvent implements Listener {
                             }
                             jobsSkillHandler.requireChecker(jobSkill.getJobsLevels().get(levelClicked), xsPlayerData,true);
                             playerSkill.setLevel(playerSkill.getLevel()+1);
+                            xsPlayerData.updateSkillStats();
                             jobsMaxUI.openUI(xsPlayerData.getPlayer());
                         } else {
                             if(ConfigUtils.getBoolean("options.click.sound.upgrade_require_more.enable")) {

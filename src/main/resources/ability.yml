@@ -1,0 +1,55 @@
+
+ability:
+  BLOOD_RUST:
+    multiple_drain_hp: 2 #2 hp per level
+    multiple_chance: 5 #5% increase per level
+    allowed_jobs:
+      - "Hunter"
+  TREASURE_HUNTER:
+    multiple_chance: 1 #1% increase per level
+    drops_list:
+      - "MONEY:100"
+      - "SC_POINT:100"
+      - "ITEM;test:1"
+    allowed_blocks:
+      - "SAND"
+      - "DIRT"
+      - "GRASS_BLOCK"
+      - "GRAVEL"
+    allowed_jobs:
+      - "Digger"
+  MIGHTY_MINER:
+    multiple_chance: 5
+    multiple_cooldown_reduction: 2
+    cooldowns: 60
+    effect_list:
+      - "FAST_DIGGING:1:30"
+      - "DAMAGE_RESISTANCE:1:30"
+    activated_blocks:
+      - "STONE"
+    allowed_jobs:
+      - "Miner"
+  I_AM_WITCH:
+    multiple_take_less: 50
+    allowed_jobs:
+      - "Brewer"
+  FISH_MASTER:
+    multiple_chance: 1 #1% increase per level
+    drops_list:
+      - "MONEY:100"
+      - "SC_POINT:100"
+      - "ITEM;test:1"
+    allowed_jobs:
+      - "Fisherman"
+  GOOD_FARMER:
+    multiple_cooldown_reduction: 2
+    multiple_timer: 0.2
+    skill_timer: 10
+    cooldowns: 60
+    activated_blocks:
+      - "WHEAT"
+      - "CARROTS"
+      - "BEETROOTS"
+      - "POTATOES"
+    allowed_jobs:
+      - "Farmer"

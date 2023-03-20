@@ -1,20 +1,20 @@
 package net.xsapi.panat.xsjobsmax.core;
 
+import net.xsapi.panat.xsjobsmax.config.ability;
 import net.xsapi.panat.xsjobsmax.config.items;
 import net.xsapi.panat.xsjobsmax.config.messages;
 import net.xsapi.panat.xsjobsmax.config.skills;
 import net.xsapi.panat.xsjobsmax.player.xsPlayer;
 import net.xsapi.panat.xsjobsmax.utils.MessagesUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffectType;
 
 import java.io.File;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class jobsSkillHandler {
 
@@ -109,7 +109,79 @@ public class jobsSkillHandler {
 
         for(String lore : lores) {
             lore = MessagesUtils.replaceColor(lore);
-            loreReture.add(lore.replace("{amount}",amt+""));
+            lore = lore.replace("{amount}",amt+"");
+            loreReture.add(lore);
+        }
+
+        return loreReture;
+
+    }
+
+    public static List<String> decodeSkill(String type, int amt,String amtType) {
+
+        if(messages.customConfig.get("skills."+type) == null) {
+            return new ArrayList<>(Arrays.asList(MessagesUtils.messages("skill_unknow")));
+        }
+
+        ArrayList<String> lores = new ArrayList<String>(messages.customConfig.getStringList("skills."+type));
+        ArrayList<String> loreReture = new ArrayList<String>();
+
+        for(String lore : lores) {
+            lore = MessagesUtils.replaceColor(lore);
+
+            if(!type.equalsIgnoreCase("MIGHTY") &&
+                    !type.equalsIgnoreCase("AGILITY") &&
+                    !type.equalsIgnoreCase("TOUGHNESS")) {
+
+
+                int chance = 0;
+                chance = (amt*ability.customConfig.getInt("ability."+type+".multiple_chance"));
+
+                if(chance > 100) {
+                    chance = 100;
+                }
+
+                String skill_format_type = "";
+                int amount = 0;
+
+                if(type.equalsIgnoreCase("BLOOD_RUST")) {
+                    skill_format_type = "multiple_drain_hp";
+                } else if(type.equalsIgnoreCase("MIGHTY_MINER")) {
+                    for(String effect : ability.customConfig.getStringList("ability.MIGHTY_MINER.effect_list")) {
+                        String effect_type = effect.split(":")[0];
+                        int amplifier = Integer.parseInt(effect.split(":")[1]);
+                        int timer = Integer.parseInt(effect.split(":")[2]);
+
+                        lore = lore.replace("{" + effect_type + "_POWER}",amplifier+"");
+                        lore = lore.replace("{" + effect_type + "_TIMER}",timer+"");
+                    }
+                    int cooldown_timer = ability.customConfig.getInt("ability.MIGHTY_MINER.cooldowns");
+
+                    cooldown_timer = cooldown_timer-((amt-1)*ability.customConfig.getInt("ability.MIGHTY_MINER.multiple_cooldown_reduction"));
+
+                    lore = lore.replace("{MIGHTY_MINER_COOLDOWN}",cooldown_timer+"");
+                } else if(type.equalsIgnoreCase("I_AM_WITCH")) {
+                    skill_format_type = "multiple_take_less";
+                } else if(type.equalsIgnoreCase("GOOD_FARMER")) {
+                    int cooldown_timer = ability.customConfig.getInt("ability.GOOD_FARMER.cooldowns");
+                    cooldown_timer = cooldown_timer-((amt-1)*ability.customConfig.getInt("ability.GOOD_FARMER.multiple_cooldown_reduction"));
+
+                    double ability_timer = ability.customConfig.getDouble("ability.GOOD_FARMER.skill_timer");
+
+                    ability_timer = ability_timer+((amt-1)* ability.customConfig.getDouble("ability.GOOD_FARMER.multiple_timer"));
+
+                    lore = lore.replace("{GOOD_FARMER_COOLDOWN}",cooldown_timer+"");
+                    lore = lore.replace("{GOOD_FARMER_TIMER}",ability_timer+"");
+                }
+                amount = (amt*ability.customConfig.getInt("ability."+type+"."+skill_format_type));
+
+                lore = lore.replace("{chance}",
+                        chance+"");
+                lore = lore.replace("{amount}",amount+"");
+                lore = lore.replace("{level}",amtType);
+            }
+
+            loreReture.add(lore);
         }
 
         return loreReture;
@@ -213,7 +285,12 @@ public class jobsSkillHandler {
                     int amt = Integer.parseInt(ability.split(":")[1]);
 
                     if(xPlayer.getAbility().get(type) != null) {
-                        xPlayer.getAbility().put(type,xPlayer.getAbility().get(type)+amt);
+                        if(type.equalsIgnoreCase("MIGHTY") || type.equalsIgnoreCase("AGILITY")
+                        || type.equalsIgnoreCase("TOUGHNESS")) {
+                            xPlayer.getAbility().put(type,xPlayer.getAbility().get(type)+amt);
+                        } else {
+                            xPlayer.getAbility().put(type,amt);
+                        }
                     } else {
                         xPlayer.getAbility().put(type,amt);
                     }

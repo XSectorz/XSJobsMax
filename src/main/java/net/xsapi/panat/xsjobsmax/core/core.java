@@ -2,6 +2,9 @@ package net.xsapi.panat.xsjobsmax.core;
 
 import net.milkbowl.vault.economy.Economy;
 
+import net.coreprotect.CoreProtect;
+import net.coreprotect.CoreProtectAPI;
+
 import net.xsapi.panat.xsjobsmax.command.commandsLoader;
 import net.xsapi.panat.xsjobsmax.config.configloader;
 import net.xsapi.panat.xsjobsmax.config.skills;
@@ -11,6 +14,7 @@ import org.black_ixx.playerpoints.PlayerPoints;
 import org.black_ixx.playerpoints.PlayerPointsAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -35,6 +39,7 @@ public class core extends JavaPlugin {
 
     private static Economy econ = null;
     private static PlayerPointsAPI ppAPI = null;
+    public static CoreProtectAPI cpAPI = null;
 
     @Override
     public void onEnable() {
@@ -65,6 +70,22 @@ public class core extends JavaPlugin {
             xPlayer.saveUser();
         }
 
+    }
+
+    public boolean setupCoreProtectAPI() {
+
+        if (Bukkit.getPluginManager().getPlugin("CoreProtect") == null) {
+            this.getLogger().info("§x§f§f§5§8§5§8[XSJOBS] CoreProtect Not Found!");
+            return false;
+        }
+
+        // Check that the API is enabled
+        Plugin coreP = getServer().getPluginManager().getPlugin("CoreProtect");
+        CoreProtectAPI CoreProtect = ((CoreProtect) coreP).getAPI();
+
+        cpAPI = CoreProtect;
+
+        return cpAPI != null;
     }
 
     public void reStoreData() {
@@ -115,6 +136,13 @@ public class core extends JavaPlugin {
         }
     }
 
+    public boolean setupSkillAPI() {
+        if (Bukkit.getPluginManager().getPlugin("AureliumSkills") != null) {
+            return true;
+        }
+        return false;
+    }
+
     public void APILoader() {
         if (!setupEconomy()) {
             Bukkit.getLogger().info("§x§f§f§5§8§5§8[XSJOBS] Disabled due to no Vault dependency found!");
@@ -130,6 +158,18 @@ public class core extends JavaPlugin {
             Bukkit.getLogger().info("§x§f§f§c§e§2§2[XSHOP] PlayerPoint: §x§5§d§f§f§6§3Hook");
         }
 
+        if(!setupSkillAPI()) {
+            Bukkit.getLogger().info("§x§f§f§c§e§2§2[XSHOP] AureliumSkills: §x§f§f§5§8§5§8Not Hook");
+        } else {
+            Bukkit.getLogger().info("§x§f§f§c§e§2§2[XSHOP] AureliumSkills: §x§5§d§f§f§6§3Hook");
+        }
+
+        if(!setupCoreProtectAPI()) {
+            Bukkit.getLogger().info("§x§f§f§c§e§2§2[XSHOP] CoreProtect: §x§f§f§5§8§5§8Not Hook");
+        } else {
+            Bukkit.getLogger().info("§x§f§f§c§e§2§2[XSHOP] CoreProtect: §x§5§d§f§f§6§3Hook");
+        }
+
     }
 
     public static Economy getEconomy() {
@@ -137,6 +177,10 @@ public class core extends JavaPlugin {
     }
     public static PlayerPointsAPI getSCPoint() {
         return ppAPI;
+    }
+
+    public static CoreProtectAPI getCoreProtectAPI() {
+        return cpAPI;
     }
 
 }
