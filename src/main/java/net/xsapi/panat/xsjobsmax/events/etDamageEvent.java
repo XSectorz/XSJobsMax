@@ -40,11 +40,15 @@ public class etDamageEvent implements Listener {
         }
 
         if(e.getEntity() instanceof Player) {
-            xsPlayer xPlayer = core.getXSPlayer().get(((Player) e.getEntity()).getPlayer().getUniqueId());
 
-            int toughness = xPlayer.getAbility().get("TOUGHNESS");
+            if(core.getXSPlayer().containsKey(((Player) e.getEntity()).getPlayer().getUniqueId())) {
+                xsPlayer xPlayer = core.getXSPlayer().get(((Player) e.getEntity()).getPlayer().getUniqueId());
 
-            e.setDamage(e.getFinalDamage()-((e.getFinalDamage()*((double) (toughness/10)/10)/100)));
+                int toughness = xPlayer.getAbility().get("TOUGHNESS");
+
+
+                e.setDamage(e.getFinalDamage()-((e.getFinalDamage()*((double) (toughness/10)/10)/100)));
+            }
         }
     }
 
