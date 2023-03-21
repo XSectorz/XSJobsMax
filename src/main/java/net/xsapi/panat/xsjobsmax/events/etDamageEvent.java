@@ -29,13 +29,16 @@ public class etDamageEvent implements Listener {
             e.setDamage(e.getFinalDamage() + (mighty/5));
 
         } else if(e.getDamager() instanceof Arrow) {
-            Player shooter = (Player) ((Arrow) e.getDamager()).getShooter();
 
-            if(shooter != null) {
-                xsPlayer xPlayer = core.getXSPlayer().get(shooter.getUniqueId());
-                int mighty = xPlayer.getAbility().get("MIGHTY");
+            if(((Arrow) e.getDamager()).getShooter() instanceof  Player) {
+                Player shooter = (Player) ((Arrow) e.getDamager()).getShooter();
 
-                e.setDamage(e.getFinalDamage() + (mighty/5));
+                if(shooter != null) {
+                    xsPlayer xPlayer = core.getXSPlayer().get(shooter.getUniqueId());
+                    int mighty = xPlayer.getAbility().get("MIGHTY");
+
+                    e.setDamage(e.getFinalDamage() + (mighty/5));
+                }
             }
         }
 
