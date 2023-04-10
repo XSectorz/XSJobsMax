@@ -148,8 +148,11 @@ public class blockBreakEvent implements Listener {
 
             int random = (int) ((Math.random() * (100 - 0)) + 0);
 
-            if(ability.customConfig.getInt("ability.TRESURE_HUNTER.multiple_chance")*level >= random) {
+            Bukkit.broadcastMessage("COME1 -> " + ability.customConfig.getInt("ability.TREASURE_HUNTER.multiple_chance")*level);
+
+            if(ability.customConfig.getInt("ability.TREASURE_HUNTER.multiple_chance")*level >= random) {
                 CoreProtectAPI CoreProtect = core.getCoreProtectAPI();
+                Bukkit.broadcastMessage("COME2");
                 if (CoreProtect != null){
                     List<String[]> lookup = CoreProtect.blockLookup(b, 604800);
                     if (lookup.isEmpty()) {

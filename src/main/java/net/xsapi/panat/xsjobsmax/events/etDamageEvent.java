@@ -6,6 +6,7 @@ import com.gamingmesh.jobs.container.JobsPlayer;
 import net.xsapi.panat.xsjobsmax.config.ability;
 import net.xsapi.panat.xsjobsmax.core.core;
 import net.xsapi.panat.xsjobsmax.player.xsPlayer;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,13 +21,14 @@ public class etDamageEvent implements Listener {
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent e) {
 
+        double damage = e.getDamage();
+
         if(e.getDamager() instanceof Player) {
 
             xsPlayer xPlayer = core.getXSPlayer().get(((Player) e.getDamager()).getPlayer().getUniqueId());
 
             int mighty = xPlayer.getAbility().get("MIGHTY");
-
-            e.setDamage(e.getFinalDamage() + (mighty/5));
+            damage = damage + (mighty/5);
 
         } else if(e.getDamager() instanceof Arrow) {
 
@@ -37,7 +39,7 @@ public class etDamageEvent implements Listener {
                     xsPlayer xPlayer = core.getXSPlayer().get(shooter.getUniqueId());
                     int mighty = xPlayer.getAbility().get("MIGHTY");
 
-                    e.setDamage(e.getFinalDamage() + (mighty/5));
+                    damage = damage + (mighty/5);
                 }
             }
         }
@@ -49,10 +51,10 @@ public class etDamageEvent implements Listener {
 
                 int toughness = xPlayer.getAbility().get("TOUGHNESS");
 
-
-                e.setDamage(e.getFinalDamage()-((e.getFinalDamage()*((double) (toughness/10)/10)/100)));
+                damage = damage - (((damage*((double) (toughness/10)/10)/100)));
             }
         }
+        e.setDamage(damage);
     }
 
     @EventHandler
