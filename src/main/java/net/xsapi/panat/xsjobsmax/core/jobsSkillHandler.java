@@ -126,6 +126,8 @@ public class jobsSkillHandler {
         ArrayList<String> lores = new ArrayList<String>(messages.customConfig.getStringList("skills."+type));
         ArrayList<String> loreReture = new ArrayList<String>();
 
+        DecimalFormat df = new DecimalFormat("#.#");
+
         for(String lore : lores) {
             lore = MessagesUtils.replaceColor(lore);
 
@@ -134,8 +136,9 @@ public class jobsSkillHandler {
                     !type.equalsIgnoreCase("TOUGHNESS")) {
 
 
-                int chance = 0;
-                chance = (amt*ability.customConfig.getInt("ability."+type+".multiple_chance"));
+                double chance = 0;
+                chance = ability.customConfig.getDouble("ability."+type+".start_chance");
+                chance = chance + ((amt-1)*ability.customConfig.getDouble("ability."+type+".multiple_chance"));
 
                 if(chance > 100) {
                     chance = 100;
@@ -176,7 +179,7 @@ public class jobsSkillHandler {
                 amount = (amt*ability.customConfig.getInt("ability."+type+"."+skill_format_type));
 
                 lore = lore.replace("{chance}",
-                        chance+"");
+                        df.format(chance)+"");
                 lore = lore.replace("{amount}",amount+"");
                 lore = lore.replace("{level}",amtType);
             }

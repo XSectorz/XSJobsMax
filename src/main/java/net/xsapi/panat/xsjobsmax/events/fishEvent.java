@@ -35,7 +35,11 @@ public class fishEvent implements Listener {
 
             int random = (int) ((Math.random() * (100 - 0)) + 0);
 
-            if(ability.customConfig.getInt("ability.FISH_MASTER.multiple_chance")*level >= random) {
+            double roll = ability.customConfig.getDouble("ability.FISH_MASTER.start_chance")
+                    + (ability.customConfig.getDouble("ability.FISH_MASTER.multiple_chance")*(level-1));
+
+
+            if(roll >= random) {
                 Player p = xPlayer.getPlayer();
                 JobsPlayer jobsPlayer = Jobs.getPlayerManager().getJobsPlayer(xPlayer.getPlayer());
 

@@ -2,11 +2,13 @@
 ability:
   BLOOD_RUST:
     multiple_drain_hp: 2 #2 hp per level
-    multiple_chance: 5 #5% increase per level
+    start_chance: 5.0 #start chance
+    multiple_chance: 5.0 #5% increase per level
     allowed_jobs:
       - "Hunter"
   TREASURE_HUNTER:
-    multiple_chance: 1 #1% increase per level
+    start_chance: 1.0 #start chance
+    multiple_chance: 0.1 #0.1% increase per level
     drops_list:
       - "MONEY:100"
       - "SC_POINT:100"
@@ -19,7 +21,8 @@ ability:
     allowed_jobs:
       - "Digger"
   MIGHTY_MINER:
-    multiple_chance: 5
+    start_chance: 2.0 #start chance
+    multiple_chance: 0.5 #0.5% increase per level
     multiple_cooldown_reduction: 2
     cooldowns: 60
     effect_list:
@@ -30,11 +33,12 @@ ability:
     allowed_jobs:
       - "Miner"
   I_AM_WITCH:
-    multiple_take_less: 50
+    multiple_take_less: 5
     allowed_jobs:
       - "Brewer"
   FISH_MASTER:
-    multiple_chance: 1 #1% increase per level
+    start_chance: 1.0 #start chance
+    multiple_chance: 0.1 #0.1% increase per level
     drops_list:
       - "MONEY:100"
       - "SC_POINT:100"

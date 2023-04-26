@@ -41,13 +41,13 @@ public class blockBreakEvent implements Listener {
             }
 
             if(ability.customConfig.getStringList("ability.GOOD_FARMER.activated_blocks").contains(b.getType().toString().toUpperCase())) {
-                e.setCancelled(skillTriggerGoodFarmer(core.getXSPlayer().get(e.getPlayer().getUniqueId()),b));
+                skillTriggerGoodFarmer(core.getXSPlayer().get(e.getPlayer().getUniqueId()),b);
             }
         }
 
     }
 
-    public boolean skillTriggerGoodFarmer(xsPlayer xPlayer,Block b) {
+    public void skillTriggerGoodFarmer(xsPlayer xPlayer,Block b) {
         if(xPlayer.getAbility().get("GOOD_FARMER") != null) {
 
             int level = xPlayer.getAbility().get("GOOD_FARMER");
@@ -61,14 +61,12 @@ public class blockBreakEvent implements Listener {
                 if(System.currentTimeMillis() - xPlayer.getCooldowns().get("GOOD_FARMER") <= 0
                 && System.currentTimeMillis() - xPlayer.getActivated_ability().get("GOOD_FARMER") >= ability_timer*1000) {
                   //  Bukkit.broadcastMessage("ON COOLDOWN : " + (System.currentTimeMillis() - xPlayer.getCooldowns().get("GOOD_FARMER")));
-                    return false;
                 }
             }
 
             if(xPlayer.getActivated_ability().containsKey("GOOD_FARMER") && System.currentTimeMillis() - xPlayer.getCooldowns().get("GOOD_FARMER") <= 0) {
                 //Bukkit.broadcastMessage("START SKILL TIME LEFT: " + (System.currentTimeMillis() - xPlayer.getActivated_ability().get("GOOD_FARMER")));
                 if(System.currentTimeMillis() - xPlayer.getActivated_ability().get("GOOD_FARMER") >= ability_timer*1000) {
-                    return false;
                 }
             } else {
                 //Bukkit.broadcastMessage("JUST START");
@@ -88,14 +86,21 @@ public class blockBreakEvent implements Listener {
 
                             if(ageable.getAge() == ageable.getMaximumAge()) {
                                 ageable.setAge(0);
-                                b.setBlockData(ageable);
-                                return true;
+                                Material type = b.getType();
+
+                                Bukkit.getScheduler().scheduleSyncDelayedTask(core.getPlugin(), new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        b.setType(type);
+                                        b.setBlockData(ageable);
+                                    }
+                                }, 10L);
+
                             }
                         }
                     }
             }
         }
-        return false;
     }
 
     public void skillTriggerMightyMiner(xsPlayer xPlayer) {
@@ -109,7 +114,10 @@ public class blockBreakEvent implements Listener {
 
             int random = (int) ((Math.random() * (100 - 0)) + 0);
 
-            if(ability.customConfig.getInt("ability.MIGHTY_MINER.multiple_chance")*level >= random) {
+            double roll = ability.customConfig.getDouble("ability.MIGHTY_MINER.start_chance")
+                    + (ability.customConfig.getDouble("ability.MIGHTY_MINER.multiple_chance")*(level-1));
+
+            if(roll >= random) {
                 JobsPlayer jobsPlayer = Jobs.getPlayerManager().getJobsPlayer(xPlayer.getPlayer());
 
                 if (jobsPlayer != null) {
@@ -147,12 +155,16 @@ public class blockBreakEvent implements Listener {
             int level = xPlayer.getAbility().get("TREASURE_HUNTER");
 
             int random = (int) ((Math.random() * (100 - 0)) + 0);
+            double roll = ability.customConfig.getDouble("ability.TREASURE_HUNTER.start_chance")
+            + (ability.customConfig.getDouble("ability.TREASURE_HUNTER.multiple_chance")*(level-1));
 
-            Bukkit.broadcastMessage("COME1 -> " + ability.customConfig.getInt("ability.TREASURE_HUNTER.multiple_chance")*level);
+            //Bukkit.broadcastMessage("Level: " + level);
+            //Bukkit.broadcastMessage("roll " + roll );
+            //Bukkit.broadcastMessage("random " + random );
+            //Bukkit.broadcastMessage("-------------------");
 
-            if(ability.customConfig.getInt("ability.TREASURE_HUNTER.multiple_chance")*level >= random) {
+            if(roll >= random) {
                 CoreProtectAPI CoreProtect = core.getCoreProtectAPI();
-                Bukkit.broadcastMessage("COME2");
                 if (CoreProtect != null){
                     List<String[]> lookup = CoreProtect.blockLookup(b, 604800);
                     if (lookup.isEmpty()) {

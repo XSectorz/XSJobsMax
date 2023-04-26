@@ -39,7 +39,10 @@ public class etKillEvent implements Listener {
 
             int random = (int) ((Math.random() * (100 - 0)) + 0);
 
-            if(ability.customConfig.getInt("ability.BLOOD_RUST.multiple_chance")*level >= random) {
+            double roll = ability.customConfig.getDouble("ability.BLOOD_RUST.start_chance")
+                    + (ability.customConfig.getDouble("ability.BLOOD_RUST.multiple_chance")*(level-1));
+
+            if(roll >= random) {
                 int amount = ability.customConfig.getInt("ability.BLOOD_RUST.multiple_drain_hp")*level;
 
                 Player p = xPlayer.getPlayer();
