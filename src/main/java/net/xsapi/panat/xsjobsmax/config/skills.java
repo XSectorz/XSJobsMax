@@ -41,10 +41,10 @@ public class skills {
     }
 
     public static void reload() {
-        customConfigFile = new File(core.getPlugin().getDataFolder(), "items.yml");
+        customConfigFile = new File(core.getPlugin().getDataFolder(), "skills.yml");
         if (!customConfigFile.exists()) {
             customConfigFile.getParentFile().mkdirs();
-            core.getPlugin().saveResource("items.yml", false);
+            core.getPlugin().saveResource("skills.yml", false);
         } else {
             customConfig = (FileConfiguration) YamlConfiguration.loadConfiguration(customConfigFile);
             try {

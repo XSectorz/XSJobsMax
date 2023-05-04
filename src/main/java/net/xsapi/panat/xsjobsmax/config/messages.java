@@ -41,10 +41,10 @@ public class messages {
     }
 
     public static void reload() {
-        customConfigFile = new File(core.getPlugin().getDataFolder(), "items.yml");
+        customConfigFile = new File(core.getPlugin().getDataFolder(), "messages.yml");
         if (!customConfigFile.exists()) {
             customConfigFile.getParentFile().mkdirs();
-            core.getPlugin().saveResource("items.yml", false);
+            core.getPlugin().saveResource("messages.yml", false);
         } else {
             customConfig = (FileConfiguration) YamlConfiguration.loadConfiguration(customConfigFile);
             try {

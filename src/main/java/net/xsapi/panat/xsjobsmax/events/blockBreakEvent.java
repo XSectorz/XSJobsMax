@@ -60,19 +60,21 @@ public class blockBreakEvent implements Listener {
             if(xPlayer.getCooldowns().containsKey("GOOD_FARMER")) {
                 if(System.currentTimeMillis() - xPlayer.getCooldowns().get("GOOD_FARMER") <= 0
                 && System.currentTimeMillis() - xPlayer.getActivated_ability().get("GOOD_FARMER") >= ability_timer*1000) {
-                  //  Bukkit.broadcastMessage("ON COOLDOWN : " + (System.currentTimeMillis() - xPlayer.getCooldowns().get("GOOD_FARMER")));
+                    //Bukkit.broadcastMessage("ON COOLDOWN : " + (System.currentTimeMillis() - xPlayer.getCooldowns().get("GOOD_FARMER")));
+                    return;
                 }
             }
 
             if(xPlayer.getActivated_ability().containsKey("GOOD_FARMER") && System.currentTimeMillis() - xPlayer.getCooldowns().get("GOOD_FARMER") <= 0) {
                 //Bukkit.broadcastMessage("START SKILL TIME LEFT: " + (System.currentTimeMillis() - xPlayer.getActivated_ability().get("GOOD_FARMER")));
                 if(System.currentTimeMillis() - xPlayer.getActivated_ability().get("GOOD_FARMER") >= ability_timer*1000) {
+                    return;
                 }
             } else {
                 //Bukkit.broadcastMessage("JUST START");
-                int cooldown_timer = ability.customConfig.getInt("ability.GOOD_FARMER.cooldowns");
-                cooldown_timer = cooldown_timer-((level-1)*ability.customConfig.getInt("ability.GOOD_FARMER.multiple_cooldown_reduction"));
-                xPlayer.getCooldowns().put("GOOD_FARMER",(System.currentTimeMillis()+(cooldown_timer*1000))+(long)(ability_timer*1000));
+                double cooldown_timer = ability.customConfig.getDouble("ability.GOOD_FARMER.cooldowns");
+                cooldown_timer = cooldown_timer-((level-1)*ability.customConfig.getDouble("ability.GOOD_FARMER.multiple_cooldown_reduction"));
+                xPlayer.getCooldowns().put("GOOD_FARMER",(long)(System.currentTimeMillis()+(cooldown_timer*1000))+(long)(ability_timer*1000));
                 xPlayer.getActivated_ability().put("GOOD_FARMER",System.currentTimeMillis());
                 //Bukkit.broadcastMessage("COOLDOWN: " + xPlayer.getCooldowns().get("GOOD_FARMER"));
             }
@@ -100,6 +102,7 @@ public class blockBreakEvent implements Listener {
                         }
                     }
             }
+            return;
         }
     }
 
