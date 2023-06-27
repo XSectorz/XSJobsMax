@@ -31,6 +31,7 @@ public class uiEvent implements Listener {
             if(e.getSlot() == 50) {
                 if(e.getCurrentItem() != null) {
                     if(xsPlayerData.getPageOpen()*5 > xsPlayerData.getSkillMenuID().size() ) {
+                        e.setCancelled(true);
                         return;
                     }
                     xsPlayerData.setPageOpen(xsPlayerData.getPageOpen()+1);
@@ -40,6 +41,9 @@ public class uiEvent implements Listener {
                 if(xsPlayerData.getPageOpen() > 1) {
                     xsPlayerData.setPageOpen(xsPlayerData.getPageOpen()-1);
                     jobsMaxUI.openUI(p);
+                } else {
+                    e.setCancelled(true);
+                    return;
                 }
             } else if(e.getSlot() == 49) {
                 p.closeInventory();
