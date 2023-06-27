@@ -43,7 +43,7 @@ public class uiEvent implements Listener {
                 }
             } else if(e.getSlot() == 49) {
                 p.closeInventory();
-            } else if((e.getSlot()+1)%9 == 0) {
+            } else if((e.getSlot()+1)%9 == 0 && e.getSlot() != 53) {
                 if(e.getCurrentItem() != null) {
                     String jobType = xsPlayerData.getSkillMenuID().get((((e.getSlot()+1)/9)-1)*xsPlayerData.getPageOpen());
                         //p.sendMessage(jobType);
