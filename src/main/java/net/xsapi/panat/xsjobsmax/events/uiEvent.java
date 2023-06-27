@@ -45,6 +45,10 @@ public class uiEvent implements Listener {
                 p.closeInventory();
             } else if((e.getSlot()+1)%9 == 0 && e.getSlot() != 53) {
                 if(e.getCurrentItem() != null) {
+                    if((((e.getSlot()+1)/9)-1)*xsPlayerData.getPageOpen() >= xsPlayerData.getSkillMenuID().size()) {
+                        e.setCancelled(true);
+                        return;
+                    }
                     String jobType = xsPlayerData.getSkillMenuID().get((((e.getSlot()+1)/9)-1)*xsPlayerData.getPageOpen());
                         //p.sendMessage(jobType);
                     xsSkill jobSkillPlayer = xsPlayerData.getSkillList().get(jobType);
@@ -58,6 +62,10 @@ public class uiEvent implements Listener {
                 }
             } else if(slotPrev.contains(e.getSlot())) {
                 if(e.getCurrentItem() != null) {
+                    if(slotPrev.indexOf(e.getSlot())*xsPlayerData.getPageOpen() >= xsPlayerData.getSkillMenuID().size()) {
+                        e.setCancelled(true);
+                        return;
+                    }
 
                     String jobType = xsPlayerData.getSkillMenuID().get(slotPrev.indexOf(e.getSlot())*xsPlayerData.getPageOpen());
                        // p.sendMessage(jobType);
