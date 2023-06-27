@@ -30,10 +30,11 @@ public class uiEvent implements Listener {
         if(e.getView().getTitle().startsWith(ConfigUtils.getString("gui.title"))) {
             if(e.getSlot() == 50) {
                 if(e.getCurrentItem() != null) {
-                    if(e.getCurrentItem().getItemMeta().getCustomModelData() == 10211) {
-                        xsPlayerData.setPageOpen(xsPlayerData.getPageOpen()+1);
-                        jobsMaxUI.openUI(p);
+                    if(xsPlayerData.getPageOpen()*5 > xsPlayerData.getSkillMenuID().size() ) {
+                        return;
                     }
+                    xsPlayerData.setPageOpen(xsPlayerData.getPageOpen()+1);
+                    jobsMaxUI.openUI(p);
                 }
             } else if(e.getSlot() == 48) {
                 if(xsPlayerData.getPageOpen() > 1) {
@@ -44,25 +45,32 @@ public class uiEvent implements Listener {
                 p.closeInventory();
             } else if((e.getSlot()+1)%9 == 0) {
                 if(e.getCurrentItem() != null) {
-                    if (e.getCurrentItem().getItemMeta().getCustomModelData() == 10219) {
-                        String jobType = xsPlayerData.getSkillMenuID().get((((e.getSlot()+1)/9)-1)*xsPlayerData.getPageOpen());
+                    String jobType = xsPlayerData.getSkillMenuID().get((((e.getSlot()+1)/9)-1)*xsPlayerData.getPageOpen());
                         //p.sendMessage(jobType);
-                        xsSkill jobSkillPlayer = xsPlayerData.getSkillList().get(jobType);
-                        jobSkillPlayer.setPage(jobSkillPlayer.getPage()+1);
-                        jobsMaxUI.openUI(xsPlayerData.getPlayer());
+                    xsSkill jobSkillPlayer = xsPlayerData.getSkillList().get(jobType);
+                    jobsSkill jobSkill = core.getJobsSkillsList().get(jobType);
+                    if(jobSkillPlayer.getPage()*6 >= jobSkill.getMaxLevel()) {
+                        e.setCancelled(true);
+                        return;
                     }
+                    jobSkillPlayer.setPage(jobSkillPlayer.getPage()+1);
+                    jobsMaxUI.openUI(xsPlayerData.getPlayer());
                 }
             } else if(slotPrev.contains(e.getSlot())) {
                 if(e.getCurrentItem() != null) {
-                    if (e.getCurrentItem().getItemMeta().getCustomModelData() == 10218) {
-                        String jobType = xsPlayerData.getSkillMenuID().get(slotPrev.indexOf(e.getSlot())*xsPlayerData.getPageOpen());
+
+                    String jobType = xsPlayerData.getSkillMenuID().get(slotPrev.indexOf(e.getSlot())*xsPlayerData.getPageOpen());
                        // p.sendMessage(jobType);
-                        xsSkill jobSkillPlayer = xsPlayerData.getSkillList().get(jobType);
-                        jobSkillPlayer.setPage(jobSkillPlayer.getPage()-1);
-                        jobsMaxUI.openUI(xsPlayerData.getPlayer());
+                    xsSkill jobSkillPlayer = xsPlayerData.getSkillList().get(jobType);
+
+                    if(jobSkillPlayer.getPage() <= 1) {
+                        e.setCancelled(true);
+                        return;
                     }
+                    jobSkillPlayer.setPage(jobSkillPlayer.getPage()-1);
+                    jobsMaxUI.openUI(xsPlayerData.getPlayer());
                 }
-            } else if(e.getSlot() >= 2 && e.getSlot() <= 43) {;
+            } else if(e.getSlot() >= 2 && e.getSlot() <= 43) {
 
                 if((e.getSlot()/9)*xsPlayerData.getPageOpen() < xsPlayerData.getSkillMenuID().size()) {
                     String jobType = xsPlayerData.getSkillMenuID().get((e.getSlot()/9)*xsPlayerData.getPageOpen());
