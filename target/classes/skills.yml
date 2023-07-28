@@ -1,0 +1,149 @@
+skills:
+  hunter:
+    level_1:
+      ability:
+        - "MIGHTY:5"
+        - "AGILITY:1"
+      required:
+        - "MONEY:5000"
+        - "SC_POINT:100"
+        - "ITEM;test:10"
+    level_2:
+      ability:
+        - "MIGHTY:1" #increase
+        - "AGILITY:1"
+        - "BLOOD_RUST:1:I" #Set to level in this case set level of blood_rust to 1 , (I) Mean ROMAN-NUMERICAL Display
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+  miner:
+    level_1:
+      ability:
+        - "TOUGHNESS:15"
+        - "AGILITY:1"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+    level_2:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+    level_3:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+        - "MIGHTY_MINER:1:I"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+    level_4:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+    level_5:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+    level_6:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+    level_7:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+  fisher:
+    level_1:
+      ability:
+        - "MIGHTY:5"
+        - "AGILITY:1"
+      required:
+        - "MONEY:5000"
+        - "SC_POINT:100"
+    level_2:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+        - "FISH_MASTER:1:I"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+  farmer:
+    level_1:
+      ability:
+        - "MIGHTY:5"
+        - "AGILITY:1"
+      required:
+        - "MONEY:5000"
+        - "SC_POINT:100"
+    level_2:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+        - "GOOD_FARMER:1:I"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+    level_3:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+        - "GOOD_FARMER:2:II"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+    level_4:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+        - "GOOD_FARMER:3:III"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+  digger:
+    level_1:
+      ability:
+        - "MIGHTY:5"
+        - "AGILITY:1"
+      required:
+        - "MONEY:5000"
+        - "SC_POINT:100"
+    level_2:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+        - "TREASURE_HUNTER:1:I"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"
+  alchemist:
+    level_1:
+      ability:
+        - "MIGHTY:5"
+        - "AGILITY:1"
+      required:
+        - "MONEY:5000"
+        - "SC_POINT:100"
+    level_2:
+      ability:
+        - "MIGHTY:1"
+        - "AGILITY:1"
+        - "I_AM_WITCH:1:I"
+      required:
+        - "MONEY:6000"
+        - "SC_POINT:150"

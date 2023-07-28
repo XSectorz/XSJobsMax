@@ -1,0 +1,87 @@
+prefix: "&x&d&4&a&a&3&d&lXSJOB &8&l»"
+no_permission: "<prefix> &x&d&4&5&9&5&9คุณไม่มีสิทธิในการใช้งานคำสั่งดังกล่าว"
+skill_unlock_lore: "&x&d&4&a&0&3&bรางวัลสำหรับการปลดล็อค:"
+skill_unknow: "&x&d&4&3&b&5&7ไม่พบสกิลดังกล่าว"
+commands_help: "<prefix> &x&c&a&d&4&5&5/xsjobs help &x&d&3&d&4&8&aเพื่อแสดงคำสั่งทั้งหมด"
+commands_open: "<prefix> &x&c&a&d&4&5&5/xsjobs &x&d&3&d&4&8&aเพื่อเปิดหน้าเมนูอัพเกรด"
+commands_set_level: "<prefix> &x&c&a&d&4&5&5/xsjobs setlevel <player> <skill> <lvl> &x&d&3&d&4&8&aตั้งค่าระดับเลเวลสกิล"
+commands_save_items: "<prefix> &x&c&a&d&4&5&5/xsjobs saveitems <name> &x&d&3&d&4&8&aเพื่อบันทึกไอเทม"
+commands_get_items: "<prefix> &x&c&a&d&4&5&5/xsjobs getitems <name> &x&d&3&d&4&8&aเพื่อรับไอเทม"
+commands_remove_items: "<prefix> &x&c&a&d&4&5&5/xsjobs removeitems <name> &x&d&3&d&4&8&aเพื่อลบไอเทม"
+player_null: "<prefix> &x&d&4&3&d&5&9ไม่พบผู้เล่นดังกล่าวในระบบ"
+NaN_error: "<prefix> &x&d&4&3&d&5&9กรุณาพิมพ์ตัวเลขเท่านั้น"
+negative_error: "<prefix> &x&d&4&3&d&5&9กรุณาพิมพ์จำนวนที่มากกว่าหรือเท่ากับ 0 เท่านั้น"
+set_skill_success: "<prefix> &x&7&7&d&4&7&5ทำการเปลี่ยนเลเวลสกิล &x&d&4&d&0&6&6&l<skill> &x&7&7&d&4&7&5ของผู้เล่น &x&d&4&d&0&6&6&l<player> &x&7&7&d&4&7&5เป็นระดับ &x&d&4&d&0&6&6&l<lvl> &x&7&7&d&4&7&5เรียบร้อยแล้ว"
+skill_null: "<prefix> &x&d&4&3&d&5&9สกิลดังกล่าวไม่มีอยู่ในระบบ"
+too_high_error: "<prefix> &x&d&4&3&d&5&9ระดับที่พิมพ์มีค่ามากกว่าเลเวลสูงสุดของอาชีพดังกล่าว"
+saved_items_null: "<prefix> &x&d&4&3&d&5&9ไอเทมดังกล่าวมีอยู่ในระบบแล้ว"
+get_items_null: "<prefix> &x&d&4&3&d&5&9ไอเทมดังกล่าวไม่มีอยู่ในระบบ"
+get_items_success: "<prefix> &x&7&7&d&4&7&5ได้รับไอเทมเรียบร้อยแล้ว"
+save_items_success: "<prefix> &x&7&7&d&4&7&5ทำการบันทึกไอเทมเรียบร้อยแล้ว"
+save_items_hand_empty: "<prefix> &x&d&4&3&d&5&9ไอเทมบนมือของคุณว่างเปล่า"
+remove_items_success: "<prefix> &x&7&7&d&4&7&5ทำการลบไอเทมเรียบร้อยแล้ว"
+required_items_null: "&x&d&4&3&d&5&9ไอเทม (%name%) ไม่มีในระบบกรุณาเช็ค"
+treasure_item_get_activated: "<prefix> &x&7&7&d&4&7&5ยินดีด้วยคุณได้รับ %type% &x&7&7&d&4&7&5จากการค้นหาสมบัติ"
+fish_item_get_activated: "<prefix> &x&7&7&d&4&7&5ยินดีด้วยคุณได้รับ %type% &x&7&7&d&4&7&5จากการตกปลา"
+item_null: "<prefix> &x&d&4&3&d&5&9ไอเทมดังกล่าวไม่มีในระบบจึงไม่สามารถมอบให้ผู้เล่นได้"
+skills:
+  MIGHTY:
+    - "&x&f&f&6&7&6&c+{amount} &f &x&f&f&6&7&6&cความแข็งแกร่ง"
+  AGILITY:
+    - "&x&7&e&d&5&f&f+{amount} &f &x&7&e&d&5&f&fฟื้นฟูมานา"
+  TOUGHNESS:
+    - "&x&f&f&7&c&4&b+{amount} &f &x&f&f&7&c&4&bความทนทาน"
+  BLOOD_RUST:
+    - "&8(&f&8) &x&f&f&c&2&2&4Blood Rust {level}"
+    - "   &7เมื่อสังหารมอนส์เตอร์หรือผู้เล่นจะมีโอกาส &x&f&f&c&f&5&4{chance}%"
+    - "   &7ที่จะดูดเลือด &x&f&f&c&f&5&4{amount} &7พลังชีวิตมายังคุณ"
+  TREASURE_HUNTER:
+    - "&8(&f&8) &x&f&f&c&2&2&4Tresure Hunter {level}"
+    - "  &7ทุกครั้งที่มีการขุดบล็อคที่ไม่ใช่จากผู้เล่นวางจะมีโอกาส &x&f&f&c&f&5&4{chance}%"
+    - "  &7ที่จะสุ่มไอเทมระดับ Common จนถึงระดับ Epic ให้แก่คุณ"
+    - "  &8&o(ดิน, ทราย, กรวด)"
+  MIGHTY_MINER:
+    - "&8(&f&8) &x&f&f&c&2&2&4Mighty Miner {level}"
+    - "  &7เมื่อทำการขุดหินจะมีโอกาส &x&f&f&c&f&5&4{chance}% &7ที่จะได้รับ"
+    - "  &7บัฟ &eขุดไว {FAST_DIGGING_POWER} &7เป็นเวลา &c{FAST_DIGGING_TIMER} &7วินาที &7และ &eทนทาน {DAMAGE_RESISTANCE_POWER} &7เป็นเวลา &c{DAMAGE_RESISTANCE_TIMER} &7วินาที"
+    - "  &8&o(หากมีความสามารถนี้อยู่แล้วความสามารถนี้จะซ้อนทับไม่ได้)"
+    - "  &8&o(คูลดาวน์ {MIGHTY_MINER_COOLDOWN} วินาที)"
+  I_AM_WITCH:
+    - "&8(&f&8) &x&f&f&c&2&2&4I AM WITCH {level}"
+    - "  &7เมื่อได้รับดาเมจจาก &aพิษ &7หรือ &dเวทมนต์ &7จะได้รับ"
+    - "  &7ความเสียหายลดลง &c{amount}%"
+  FISH_MASTER:
+    - "&8(&f&8) &x&f&f&c&2&2&4Fish Master {level}"
+    - "  &7ทุกครั้งที่ตกปลาจะมีโอกาส &x&f&f&c&f&5&4{chance}% &7ที่จะสุ่ม"
+    - "  &7ไอเทมระดับ Common จนถึงระดับ Epic ให้แก่คุณ"
+  GOOD_FARMER:
+    - "&8(&f&8) &x&f&f&c&2&2&4Good Farmer {level}"
+    - "  &7เมื่อทำการเก็บเกี่ยวผลผลิตที่เต็มไวจะทำการปลูกผลผลิต"
+    - "  &7คืนโดยอัตโนมัติมีผล &x&f&f&c&f&5&4{GOOD_FARMER_TIMER} วินาที"
+    - "  &8&o(มีผลกับ ข้าว, แครอท, บีทรูท, มัน)"
+    - "  &8&o(คูลดาวน์ {GOOD_FARMER_COOLDOWN} วินาที)"
+required:
+  MONEY: "&x&d&4&b&a&2&fเงินตรา &f"
+  SC_POINT: "&x&3&d&a&7&d&4สยามคอยด์ &f"
+placeholder:
+  MONEY: "&x&d&4&b&a&2&f%amount% เงินตรา &f"
+  SC_POINT: "&x&3&d&a&7&d&4%amount% สยามคอยด์ &f"
+  ITEM: "&x&F&F&8&0&E&3%amount%x %item_name%"
+upgrades:
+  can_upgrade:
+    - ""
+    - "&x&d&4&a&0&3&bเงื่อนไขการปลดล็อค"
+    - "{unlock_condition}"
+    - ""
+    - "&f &x&d&4&a&0&3&bคลิก-ซ้าย เพื่อทำการอัพเกรด"
+  cant_upgrade:
+    - ""
+    - "&f &x&d&4&3&d&4&7ไม่สามารถอัพเกรดได้"
+  already_upgrade:
+    - ""
+    - "&f &x&4&b&d&4&4&0อัพเกรดเรียบร้อยแล้ว"
+  max_upgrade:
+    - ""
+    - "&f &x&d&4&a&0&3&bเลเวลสูงสุดแล้ว"
+  upgrade_required_needed: "&x&d&4&3&9&3&9✘ &8(%have%/%required%) %name%"
+  upgrade_required_success: "&x&7&4&d&4&2&8✔ &8(%have%/%required%) %name%"
