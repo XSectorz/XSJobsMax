@@ -6,7 +6,7 @@ public class configloader {
 
     public configloader() {
 
-        Bukkit.getLogger().info("§aLoad config.yml....");
+        Bukkit.getConsoleSender().sendMessage("§aLoad config.yml....");
         new config().loadConfigu();
         new messages().loadConfigu();
         new skills().loadConfigu();

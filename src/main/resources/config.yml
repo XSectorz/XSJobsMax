@@ -1,4 +1,12 @@
 
+database:
+  enable: false
+  host: localhost
+  port: 3306
+  dbTable: testdb
+  user: root
+  password: password
+
 options:
   click:
     sound:
