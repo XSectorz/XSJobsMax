@@ -5,8 +5,7 @@ api-version: 1.19
 authors: [ PanatXsectorZ ]
 description: LimitBreak your jobs skill!!
 aliases: xsjobs
-depend: [Vault]
-softdepend: [PlayerPoints]
+softdepend: [Vault, PlayerPoints]
 commands:
   xsjobs:
     description: command for xsjobs-max plugin

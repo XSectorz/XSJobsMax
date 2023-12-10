@@ -40,7 +40,6 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <outputFile>D:\Xsectorz\Server\Sur1_20_1\plugins\[XSAPI]_JobsMax.jar</outputFile>
                         </configuration>
                     </execution>
                 </executions>

@@ -210,28 +210,22 @@ public class core extends JavaPlugin {
         try {
             Connection connection = DriverManager.getConnection(JDBC_URL,USER,PASS);
 
-            DatabaseMetaData metaData = connection.getMetaData();
-            ResultSet resultSet = metaData.getTables(null, null, getTABLE(), null);
-            boolean tableExists = resultSet.next();
+            Statement statement = connection.createStatement();
 
-            if(!tableExists) {
-                Statement statement = connection.createStatement();
+            String createTableQuery = "CREATE TABLE IF NOT EXISTS " + getTABLE() + " ("
+                    + "id INT PRIMARY KEY AUTO_INCREMENT, "
+                    + "uuid VARCHAR(36), "
+                    + "player VARCHAR(16), "
+                    + "hunter INT DEFAULT 0, "
+                    + "miner INT DEFAULT 0, "
+                    + "fisher INT DEFAULT 0, "
+                    + "farmer INT DEFAULT 0, "
+                    + "digger INT DEFAULT 0, "
+                    + "alchemist INT DEFAULT 0"
+                    + ")";
 
-                String createTableQuery = "CREATE TABLE " + getTABLE() + " ("
-                        + "id INT PRIMARY KEY AUTO_INCREMENT, "
-                        + "uuid VARCHAR(36), "
-                        + "player VARCHAR(16), "
-                        + "hunter INT DEFAULT 0, "
-                        + "miner INT DEFAULT 0, "
-                        + "fisher INT DEFAULT 0, "
-                        + "farmer INT DEFAULT 0, "
-                        + "digger INT DEFAULT 0, "
-                        + "alchemist INT DEFAULT 0"
-                        + ")";
-
-                statement.executeUpdate(createTableQuery);
-                statement.close();
-            }
+            statement.executeUpdate(createTableQuery);
+            statement.close();
             connection.close();
 
             Bukkit.getConsoleSender().sendMessage("§x§E§7§F§F§0§0[XSJOBS] Database : §x§6§0§F§F§0§0Connected");
