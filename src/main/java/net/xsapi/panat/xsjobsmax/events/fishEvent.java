@@ -3,6 +3,8 @@ package net.xsapi.panat.xsjobsmax.events;
 import com.gamingmesh.jobs.Jobs;
 import com.gamingmesh.jobs.container.JobProgression;
 import com.gamingmesh.jobs.container.JobsPlayer;
+import net.momirealms.customfishing.api.event.FishingResultEvent;
+import net.momirealms.customfishing.api.mechanic.loot.LootType;
 import net.xsapi.panat.xsjobsmax.config.ability;
 import net.xsapi.panat.xsjobsmax.config.items;
 import net.xsapi.panat.xsjobsmax.core.core;
@@ -20,13 +22,34 @@ import java.util.List;
 
 public class fishEvent implements Listener {
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    /*@EventHandler(priority = EventPriority.HIGHEST)
     public void onFish(PlayerFishEvent e) {
         if(e.getState().equals(PlayerFishEvent.State.CAUGHT_FISH)) {
             if(e.isCancelled()) {
                 skillTriggerFishMaster(core.getXSPlayer().get(e.getPlayer().getUniqueId()));
             }
         }
+    }*/
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onFishResult(FishingResultEvent e) {
+
+        if(e.getResult().equals(FishingResultEvent.Result.SUCCESS)) {
+            skillTriggerFishMaster(core.getXSPlayer().get(e.getPlayer().getUniqueId()));
+
+            if(e.getLoot().getType().equals(LootType.ITEM)) {
+                JobsPlayer jobsPlayer = Jobs.getPlayerManager().getJobsPlayer(e.getPlayer());
+                List<JobProgression> jobs = jobsPlayer.getJobProgression();
+                for (JobProgression prog : jobs) {
+                    if(prog.getJob().getName().equalsIgnoreCase("Fisherman")) {
+                        core.getEconomy().depositPlayer(e.getPlayer(),10);
+                        prog.addExperience(15);
+                    }
+                }
+            }
+
+        }
+
     }
 
     public void skillTriggerFishMaster(xsPlayer xPlayer) {

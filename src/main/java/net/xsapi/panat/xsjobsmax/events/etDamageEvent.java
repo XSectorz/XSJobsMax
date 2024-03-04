@@ -26,7 +26,9 @@ public class etDamageEvent implements Listener {
         if(e.getDamager() instanceof Player) {
 
             xsPlayer xPlayer = core.getXSPlayer().get(((Player) e.getDamager()).getPlayer().getUniqueId());
-
+            if(xPlayer == null)  {
+                return;
+            }
             int mighty = xPlayer.getAbility().get("MIGHTY");
             damage = damage + (mighty/5);
 
@@ -37,6 +39,9 @@ public class etDamageEvent implements Listener {
 
                 if(shooter != null) {
                     xsPlayer xPlayer = core.getXSPlayer().get(shooter.getUniqueId());
+                    if(xPlayer == null)  {
+                        return;
+                    }
                     int mighty = xPlayer.getAbility().get("MIGHTY");
 
                     damage = damage + (mighty/5);
@@ -48,7 +53,9 @@ public class etDamageEvent implements Listener {
 
             if(core.getXSPlayer().containsKey(((Player) e.getEntity()).getPlayer().getUniqueId())) {
                 xsPlayer xPlayer = core.getXSPlayer().get(((Player) e.getEntity()).getPlayer().getUniqueId());
-
+                if(xPlayer == null)  {
+                    return;
+                }
                 int toughness = xPlayer.getAbility().get("TOUGHNESS");
 
                 damage = damage - (((damage*((double) (toughness/10)/10)/100)));
